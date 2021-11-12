@@ -1,5 +1,18 @@
-# ECommerce Data
-##### 아이디어스 과제 전형
+# 아이디어스 과제 전형
+## 사용환경 
+#### 사용언어
+```
+scala
+```
+데이터가 크다보니 pyspark 보다 성능이 조금 더 빠른 scala 사용
+
+#### 버전
+```
+hadoop 2.10.1
+spark 3.2.0
+scala 2.12
+```
+
 
 ## 요구사항
 
@@ -21,6 +34,7 @@ user_id,session_id,session_time
 561409785,a7db81e5-7d03-404b-806b-063148c86e1b,18h 15m 43s
 524688046,0193ea4b-88eb-40ad-bae9-2b00ecd1481f,18h 12m 19s
 ```
+[CSV 파일](https://github.com/hjmoons/idus-task/blob/master/output/answer_%232.csv)
 
 #### 3. 1의 날짜의 15분단위로 active user 수를 구하세요
 ```
@@ -39,6 +53,8 @@ num_user,quarter_time
 ...
 ...
 ```
+[CSV 파일](https://github.com/hjmoons/idus-task/blob/master/output/answer_%233.csv)
+
 #### 4. 1의 날짜에서 view → cart → purchase 이벤트 진행에 따른 funnel 수치를 구하세요
 ```
 view -> cart    : 0.0691427775405295

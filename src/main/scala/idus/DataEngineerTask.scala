@@ -71,7 +71,6 @@ object DataEngineerTask {
         "ORDER BY sec DESC"
     )
     val sec_df_time_10 = sec_df_time.drop("sec").limit(10)
-    //sec_df_time_10.show(false)
 
     // Question 3.
     val dev_quarter = udf(UDFs.dev_quarter _)
@@ -97,8 +96,6 @@ object DataEngineerTask {
     // Question 4.
     val fth_df = df.filter($"date" === max_num_date)
       .drop("date", "hour", "min", "sec")
-
-    //fth_df.show(false)
     fth_df.createOrReplaceTempView("type_table")
 
     val fth_df_type = spark.sql(
@@ -111,6 +108,7 @@ object DataEngineerTask {
 
     val type_count_list = fth_df_type.collect()
 
+    // funnel 수치 계산을 위한 변수 선언
     var view = 0.0
     var cart = 0.0
     var purchase = 0.0
@@ -132,7 +130,8 @@ object DataEngineerTask {
     view_to_cart = cart / view
     cart_to_purchase = purchase / cart
 
-    // Answers to questions
+
+    // 각 요구사항에 대한 결과 출력
     println("=============================================")
     println("Answer #1")
     println("Date with the most users: " + max_num_date)
@@ -151,6 +150,7 @@ object DataEngineerTask {
     println("cart-to-purchase's funnel: " + cart_to_purchase)
     println("=============================================")
 
+    // 각 요구사항에 대한 결과 CSV 파일 출력
     save_csv(fst_df_count, "#1")
     save_csv(sec_df_time_10, "#2")
     save_csv(trd_df_quarter, "#3")

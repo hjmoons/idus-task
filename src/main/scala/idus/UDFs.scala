@@ -5,6 +5,13 @@ object UDFs {
   def re_time(time: String): String = time.replace(" UTC", "")
   def sec_time(hour: Int, min: Int, sec: Int): Int = hour * 3600 + min * 60 + sec
   def sess_time(maxTime: Int, minTime: Int): Int = maxTime - minTime
+  def sec_to_hour(maxTime: Int, minTime: Int): String = {
+    val sessTime = maxTime - minTime
+    val hour = sessTime / 3600
+    val min = (sessTime % 3600) / 60
+    val sec = (sessTime % 3600) % 60
+    hour.toString + "h " + min.toString + "m " + sec.toString + "s"
+  }
   def dev_quarter(min: Int): Int = {
     min/15 match {
       case 0 => 0
